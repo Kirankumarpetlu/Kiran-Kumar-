@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|webp|svg|json|ico|txt))",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.ts"
+    }
+  ]
+}

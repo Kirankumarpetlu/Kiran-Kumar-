@@ -41,16 +41,16 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center px-6 pt-24 overflow-hidden"
+      className="relative flex h-screen min-h-screen items-center justify-center px-6 overflow-hidden"
     >
       {/* Cinematic Glowing Background Orbs */}
       <div className="hero-orb bg-white h-[450px] w-[450px] right-[-100px] top-[-100px] opacity-[0.04]" />
       <div className="hero-orb bg-white h-[350px] w-[350px] left-[-150px] bottom-[-100px] opacity-[0.03]" />
       <div className="hero-orb bg-white h-[280px] w-[280px] left-[45%] top-[40%] opacity-[0.02] -translate-x-1/2 -translate-y-1/2" />
 
-      <div className="mx-auto flex flex-col-reverse lg:flex-row w-full max-w-7xl gap-12 lg:gap-8 items-center relative z-10">
+      <div className="mx-auto flex flex-col-reverse lg:flex-row w-full max-w-7xl gap-12 lg:gap-8 items-center justify-start relative z-10">
         {/* Left Column: Identity details (moves to second row on mobile) */}
-        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left lg:translate-x-12">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -161,9 +161,9 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease }}
-          className="flex-1 flex justify-center lg:justify-end items-center relative py-6 lg:py-12"
+          className="flex-1 flex justify-center items-center relative py-6 lg:py-0"
         >
-          <div className="relative group animate-float lg:-mt-12">
+          <div className="relative group animate-float">
             {/* Soft backdrop purple glow */}
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#8f95f5]/20 to-transparent blur-xl opacity-40 group-hover:opacity-75 transition duration-1000" />
 

@@ -24,7 +24,7 @@ export function About() {
             }}
           />
 
-          <div className="relative z-10 space-y-6 text-sm md:text-base leading-relaxed text-silver font-mono">
+          <div className="relative z-10 mx-auto max-w-2xl space-y-6 text-sm md:text-base leading-relaxed text-center text-silver font-mono">
             <div className="mb-4">
               <span className="font-mono text-xs text-[#8f95f5] font-bold">// identity.log</span>
             </div>
@@ -44,7 +44,7 @@ export function About() {
               vector deployment paths.
             </p>
 
-            <div className="mt-6 pt-5 border-t border-white/5 flex flex-wrap gap-2">
+            <div className="mt-6 pt-5 border-t border-white/5 flex flex-wrap justify-center gap-2">
               {[
                 "python",
                 "generative ai",
