@@ -12,13 +12,14 @@ import { Footer } from "@/components/portfolio/footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kiran Kumar — Data / ML / AI Engineer" },
+      { title: "Kiran Kumar| AI Engineer" },
       {
         name: "description",
         content:
           "Portfolio of Kiran Kumar — Data, ML, and AI Engineer specializing in intelligent automation frameworks, optimization pipelines, agentic AI systems, and LLM orchestration.",
       },
       { property: "og:title", content: "Kiran Kumar — Data / ML / AI Engineer" },
+      { property: "og:image", content: "/profile.png" },
       {
         property: "og:description",
         content:
