@@ -1,6 +1,10 @@
 // @ts-ignore: module has no declaration file
 import server from "../dist/server/server.js";
 
+export const config = {
+  runtime: "edge",
+};
+
 export default async (request: Request) => {
   try {
     return await server.fetch(request);
@@ -9,3 +13,4 @@ export default async (request: Request) => {
     return new Response("Internal Server Error", { status: 500 });
   }
 };
+
