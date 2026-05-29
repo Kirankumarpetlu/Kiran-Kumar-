@@ -41,7 +41,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex h-screen min-h-screen items-center justify-center px-6 overflow-hidden"
+      className="relative flex min-h-screen lg:h-screen items-center justify-center px-6 pt-28 pb-12 lg:py-0 overflow-hidden"
     >
       {/* Cinematic Glowing Background Orbs */}
       <div className="hero-orb bg-white h-[450px] w-[450px] right-[-100px] top-[-100px] opacity-[0.04]" />
