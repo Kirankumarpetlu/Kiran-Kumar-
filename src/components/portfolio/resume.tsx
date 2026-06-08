@@ -40,8 +40,7 @@ export function Resume() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-medium text-background transition-all hover:bg-white/90"
               >
-                <span className="font-mono text-[11px] text-background/60">$</span>
-                download.resume
+                view resume
                 <span className="transition-transform group-hover:translate-y-0.5">↓</span>
               </a>
               <a
