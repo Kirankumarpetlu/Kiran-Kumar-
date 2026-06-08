@@ -35,7 +35,7 @@ export function Resume() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://drive.google.com/file/d/12hmYMa4XpQuK8oXCsmx-7kbus-rUliqT/view
+                href="https://drive.google.com/file/d/16IDpUeTwZ3NyP7P_Esng81JIcKHUakAi/view?usp=sharing
                 "
                 target="_blank"
                 rel="noopener noreferrer"
