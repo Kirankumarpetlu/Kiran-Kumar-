@@ -35,7 +35,7 @@ export function Resume() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://drive.google.com/file/d/16IDpUeTwZ3NyP7P_Esng81JIcKHUakAi/view?usp=sharing"
+                href="https://drive.google.com/file/d/1ViWIPcKGx9kKoI8cKI6rb9VwFsWZMVBh/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-medium text-background transition-all hover:bg-white/90"
