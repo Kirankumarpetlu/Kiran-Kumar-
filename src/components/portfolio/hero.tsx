@@ -108,7 +108,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4"
           >
             <a
-              href="https://drive.google.com/file/d/1SCXOrxmcbtRCAFgCRbraTcHmKG_0OBa4/view?usp=sharing"
+              href="https://drive.google.com/file/d/1ViWIPcKGx9kKoI8cKI6rb9VwFsWZMVBh/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-3 rounded-md bg-[#8f95f5] border border-[#8f95f5] px-6 py-3 font-mono text-xs uppercase tracking-widest text-[#0c0d0e] transition-all duration-300 hover:bg-[#a3a8f7] hover:border-[#a3a8f7] hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(143,149,245,0.25)]"
