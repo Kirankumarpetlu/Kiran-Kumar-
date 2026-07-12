@@ -59,6 +59,10 @@
       scroll-behavior: smooth;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--background);
       color: var(--text-primary);
@@ -138,18 +142,7 @@
       animation: grain 8s steps(10) infinite;
     }
 
-    /* Blurry glowing background orbs */
-    .hero-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      opacity: 0.04;
-      mix-blend-mode: screen;
-      z-index: 0;
-    }
-    .orb-1 { background-color: var(--text-accent); width: 450px; height: 450px; right: -100px; top: -100px; }
-    .orb-2 { background-color: var(--text-accent); width: 350px; height: 350px; left: -150px; bottom: -100px; }
+
 
     /* Neural particle canvas backdrop */
     #neural-canvas {
@@ -331,6 +324,7 @@
        SECTION 1: HERO CONTAINER (DUAL-COLUMN)
        ---------------------------------------------------- */
     .hero {
+      position: relative;
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -338,7 +332,23 @@
       align-items: center;
       padding: 120px 0 60px 0;
     }
+    .hero__bg {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url('/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.7s ease;
+    }
     .hero__content {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -369,11 +379,10 @@
       font-size: 100px;
       line-height: 0.9;
       font-weight: bold;
+      color: #ffffff;
     }
     .hero__name-accent {
-      background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffffff;
     }
     .hero__role {
       margin-top: 24px;
@@ -385,7 +394,7 @@
     .hero__desc {
       margin-top: 32px;
       font-size: 15px;
-      color: var(--text-dimmed);
+      color: #ffffff;
       line-height: 1.6;
       max-width: 540px;
     }
@@ -408,17 +417,17 @@
       cursor: pointer;
     }
      .btn--primary {
-       background-color: #8f95f5;
-       color: #0c0d0e;
-       border: 1px solid #8f95f5;
-       font-weight: bold;
-     }
-     .btn--primary:hover {
-       background-color: #a3a8f7;
-       border-color: #a3a8f7;
-       transform: translateY(-2px);
-       box-shadow: 0 0 20px rgba(143, 149, 245, 0.25);
-     }
+        background-color: #a855f7;
+        color: #0c0d0e;
+        border: 1px solid #a855f7;
+        font-weight: bold;
+      }
+      .btn--primary:hover {
+        background-color: #b55fe6;
+        border-color: #b55fe6;
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+      }
     .btn--secondary {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--card-border);
@@ -460,14 +469,14 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      z-index: 1;
     }
     .hero__avatar-container {
-      width: 240px;
-      height: 240px;
+      width: 190px;
+      height: 190px;
       margin-top: -24px;
       border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 40px rgba(143, 149, 245, 0.05), inset 0 0 20px rgba(255, 255, 255, 0.05);
+      border: none;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -477,8 +486,6 @@
       transition: all 0.5s ease;
     }
     .hero__avatar-container:hover {
-      border-color: rgba(143, 149, 245, 0.3);
-      box-shadow: 0 0 60px rgba(143, 149, 245, 0.15), inset 0 0 30px rgba(143, 149, 245, 0.1);
       transform: scale(1.02);
     }
     .hero__avatar-img {
@@ -494,8 +501,8 @@
 
     @media (min-width: 1200px) {
       .hero__avatar-container {
-        width: 320px;
-        height: 320px;
+        width: 256px;
+        height: 256px;
         margin-top: -48px;
       }
     }
@@ -511,6 +518,21 @@
       .hero__name { font-size: 64px; }
       .hero__desc { max-width: 100%; }
       .hero__actions, .hero__socials { justify-content: center; }
+    }
+
+    @media (min-width: 901px) {
+      .hero__content {
+        transform: translateY(96px);
+      }
+      .hero__photo-wrap {
+        transform: translateX(-48px);
+      }
+    }
+
+    @media (orientation: portrait) {
+      .hero__bg {
+        transform: rotate(90deg) scale(1.5);
+      }
     }
 
     /* ----------------------------------------------------
@@ -683,8 +705,13 @@
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: 1fr;
       gap: 24px;
+    }
+    @media (min-width: 901px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     .skills-card {
       position: relative;
@@ -693,6 +720,9 @@
       padding: 28px;
       border-radius: 16px;
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .skills-card:hover {
       border-color: var(--card-border-hover);
@@ -708,10 +738,10 @@
     }
     .skill-tag {
       font-size: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(255, 255, 255, 0.02);
-      padding: 8px 16px;
-      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: transparent;
+      padding: 6px 12px;
+      border-radius: 99px;
       color: var(--text-dimmed);
       transition: all 0.3s ease;
       display: inline-block;
@@ -1624,6 +1654,8 @@
 
     <!-- SECTION 1: HERO (DUAL COLUMN DYNAMIC INTERFACE) -->
     <section id="hero" class="hero">
+      <!-- Background Image starting below Nav (80px top offset) -->
+      <div class="hero__bg"></div>
       
       <!-- Left detail column -->
       <div class="hero__content">
@@ -1634,23 +1666,23 @@
         
         <h1 class="hero__name font-sans" style="display: flex; flex-wrap: wrap; gap: 0 16px; align-items: baseline;">
           <span>KIRAN</span>
-          <span class="hero__name-accent">KUMAR<span style="color: #8f95f5;" class="font-sans font-black">.</span></span>
+          <span class="hero__name-accent">KUMAR</span>
         </h1>
         
         <div class="hero__role">
           <span>&gt; </span>
-          <span id="typewriter-text" style="color: #8f95f5; text-transform: uppercase; margin-left: 6px; letter-spacing: 0.15em;"></span>
-          <span class="inline-block cursor-blink" style="width: 8px; height: 14px; background: #8f95f5; margin-left: 6px;"></span>
+          <span id="typewriter-text" style="color: #ffffff; text-transform: uppercase; margin-left: 6px; letter-spacing: 0.15em;"></span>
+          <span class="inline-block cursor-blink" style="width: 8px; height: 14px; background: #ffffff; margin-left: 6px;"></span>
         </div>
         
         <p class="hero__desc font-mono">
-          Architecting intelligent automation systems and high-throughput ML pipelines. 
-          Focused on orchestration matrices, fine-tuning adapter deployments, 
-          and scalable data analytics telemetry interfaces.
+          An AI Engineer specializing in building custom LLMs, developing robust RAG pipelines,
+          and designing autonomous agentic workflows to deliver production-ready intelligent
+          applications.
         </p>
         
         <div class="hero__actions">
-          <a href="#projects" class="btn btn--primary">$ view.projects</a>
+          <a href="https://drive.google.com/file/d/1ViWIPcKGx9kKoI8cKI6rb9VwFsWZMVBh/view?usp=sharing" target="_blank" rel="noreferrer" class="btn btn--primary">$ view.resume</a>
           <a href="#contact" class="btn btn--secondary">$ get.in.touch</a>
         </div>
         
@@ -1665,7 +1697,7 @@
 
       <!-- Right Column: Perfectly circular avatar profile photo exactly matching layout -->
       <div class="hero__photo-wrap">
-        <div class="hero__avatar-container animate-float">
+        <div class="hero__avatar-container">
           <img src="/profile.png" alt="Kiran Kumar" class="hero__avatar-img" />
         </div>
       </div>
@@ -1783,72 +1815,78 @@
 
       <!-- Categorized cards grid -->
       <div class="skills-grid">
-        <!-- Card 1 -->
+        <!-- Card 1: AI/ML & Deep Learning -->
         <div class="skills-card">
-          <div class="skills-card__header">
-            <span class="skills-card__code">cognitive.core</span>
-            <span class="skills-card__dot"></span>
+          <div>
+            <div class="skills-card__header">
+              <span class="skills-card__code">cognitive.core</span>
+              <span class="skills-card__dot"></span>
+            </div>
+            <h3 class="skills-card__title font-sans">AI/ML & Deep Learning</h3>
+            <p class="skills-card__desc font-mono" style="color: var(--text-dimmed); margin-top: 10px;">Developing advanced neural architectures, large language models, custom agent orchestration grids, and computer vision pipelines to deliver intelligent systems.</p>
           </div>
-          <h3 class="skills-card__title font-sans">AI / ML CORE</h3>
-          <p class="skills-card__desc font-mono">Architecting context-aware deep neural infrastructures and fine-tuning models.</p>
-          <div class="skills-card__divider"></div>
-          <ul class="skills-card__list font-mono">
-            <li class="skills-card__item"><span>›</span> Generative AI Pipelines</li>
-            <li class="skills-card__item"><span>›</span> LLM Fine-Tuning</li>
-            <li class="skills-card__item"><span>›</span> Agentic Decision Grids</li>
-            <li class="skills-card__item"><span>›</span> Deep Learning / NLP</li>
-          </ul>
+          <div class="skills-card__divider" style="margin: 20px 0;"></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 10px;" class="font-mono">
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">Generative AI</span>
+            <span class="skill-tag">LLMs</span>
+            <span class="skill-tag">RAG Pipelines</span>
+            <span class="skill-tag">Fine-Tuning</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">HuggingFace</span>
+            <span class="skill-tag">Python</span>
+          </div>
         </div>
 
-        <!-- Card 2 -->
+        <!-- Card 2: MLOps & Production Deployment -->
         <div class="skills-card">
-          <div class="skills-card__header">
-            <span class="skills-card__code">frameworks.run</span>
-            <span class="skills-card__dot"></span>
+          <div>
+            <div class="skills-card__header">
+              <span class="skills-card__code">frameworks.run</span>
+              <span class="skills-card__dot"></span>
+            </div>
+            <h3 class="skills-card__title font-sans">MLOps & Production Deployment</h3>
+            <p class="skills-card__desc font-mono" style="color: var(--text-dimmed); margin-top: 10px;">Automating validation gates, managing containerized model serving interfaces, setting up CI/CD pipelines, and establishing secure telemetry loops.</p>
           </div>
-          <h3 class="skills-card__title font-sans">AI FRAMEWORKS</h3>
-          <p class="skills-card__desc font-mono">Orchestrating multi-agent autonomy clusters and persistent vector retrieval index layers.</p>
-          <div class="skills-card__divider"></div>
-          <ul class="skills-card__list font-mono">
-            <li class="skills-card__item"><span>›</span> LangChain Integration</li>
-            <li class="skills-card__item"><span>›</span> CrewAI Orchestrations</li>
-            <li class="skills-card__item"><span>›</span> PyTorch Systems</li>
-            <li class="skills-card__item"><span>›</span> FastAPI AI Backends</li>
-          </ul>
+          <div class="skills-card__divider" style="margin: 20px 0;"></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 10px;" class="font-mono">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">MLflow</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">AWS ECS</span>
+            <span class="skill-tag">Vercel</span>
+            <span class="skill-tag">Model Serving</span>
+          </div>
         </div>
 
-        <!-- Card 3 -->
+        <!-- Card 3: Data Engineering & Cloud -->
         <div class="skills-card">
-          <div class="skills-card__header">
-            <span class="skills-card__code">lang.analytics</span>
-            <span class="skills-card__dot"></span>
+          <div>
+            <div class="skills-card__header">
+              <span class="skills-card__code">cloud.security</span>
+              <span class="skills-card__dot"></span>
+            </div>
+            <h3 class="skills-card__title font-sans">Data Engineering & Cloud</h3>
+            <p class="skills-card__desc font-mono" style="color: var(--text-dimmed); margin-top: 10px;">Designing scalable data warehouse pipelines, optimizing analytical queries, configuring cloud compute clusters, and managing low-latency databases.</p>
           </div>
-          <h3 class="skills-card__title font-sans">LANGUAGES & DATA</h3>
-          <p class="skills-card__desc font-mono">Engineering high-concurrency computation routines and structured query architectures.</p>
-          <div class="skills-card__divider"></div>
-          <ul class="skills-card__list font-mono">
-            <li class="skills-card__item"><span>›</span> Optimized Python</li>
-            <li class="skills-card__item"><span>›</span> Data Telemetry Insights</li>
-            <li class="skills-card__item"><span>›</span> Vector Databases</li>
-            <li class="skills-card__item"><span>›</span> NoSQL / MongoDB</li>
-          </ul>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="skills-card">
-          <div class="skills-card__header">
-            <span class="skills-card__code">cloud.security</span>
-            <span class="skills-card__dot"></span>
+          <div class="skills-card__divider" style="margin: 20px 0;"></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 10px;" class="font-mono">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Google Cloud</span>
+            <span class="skill-tag">SQL / MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Vector Databases</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Apache Spark</span>
+            <span class="skill-tag">Airflow</span>
           </div>
-          <h3 class="skills-card__title font-sans">CLOUD & SECURITY</h3>
-          <p class="skills-card__desc font-mono">Provisioning serverless GPU computation nodes and secure vector boundary sandboxes.</p>
-          <div class="skills-card__divider"></div>
-          <ul class="skills-card__list font-mono">
-            <li class="skills-card__item"><span>›</span> Cloud GPU Infrastructure</li>
-            <li class="skills-card__item"><span>›</span> Cybersecurity Systems</li>
-            <li class="skills-card__item"><span>›</span> Docker Microservices</li>
-            <li class="skills-card__item"><span>›</span> CI/CD Pipelines</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -1876,7 +1914,6 @@
             <div class="proj-card__dots"></div>
             <svg class="proj-card__svg" id="svg-proj-01"></svg>
             <span class="proj-card__index">PROJ.01</span>
-            <span class="proj-card__date">MID 2025</span>
           </div>
           <div class="proj-card__body">
             <div>
@@ -1904,7 +1941,6 @@
             <div class="proj-card__dots"></div>
             <svg class="proj-card__svg" id="svg-proj-02"></svg>
             <span class="proj-card__index">PROJ.02</span>
-            <span class="proj-card__date">LATE 2025</span>
           </div>
           <div class="proj-card__body">
             <div>
@@ -1932,7 +1968,6 @@
             <div class="proj-card__dots"></div>
             <svg class="proj-card__svg" id="svg-proj-03"></svg>
             <span class="proj-card__index">PROJ.03</span>
-            <span class="proj-card__date">DEC 2025</span>
           </div>
           <div class="proj-card__body">
             <div>
@@ -1965,8 +2000,6 @@
         <h3 class="modal__title font-sans" id="modal-project-title">PROJECT TITLE</h3>
         <div class="modal__meta">
           <span id="modal-project-tagline">TAGLINE</span>
-          <span style="color: var(--text-dark)">//</span>
-          <span id="modal-project-date">DATE</span>
         </div>
         <div class="modal__divider"></div>
         <p class="modal__desc font-mono" id="modal-project-desc">Detailed project description goes here...</p>
@@ -2336,6 +2369,7 @@
     const typewriterEl = document.getElementById('typewriter-text');
 
     function runTypewriter() {
+      if (!typewriterEl) return;
       const currentRole = roles[roleIdx];
       
       if (isDeleting) {
@@ -2359,7 +2393,9 @@
 
       setTimeout(runTypewriter, speed);
     }
-    runTypewriter();
+    if (typewriterEl) {
+      runTypewriter();
+    }
 
     /* ----------------------------------------------------
        BACKGROUND NEURAL PARTICLE DOTS GRID CANVAS
@@ -2575,7 +2611,6 @@
       document.getElementById('modal-project-eyebrow').innerText = `PROJECT METRICS // PROJ.${id}`;
       document.getElementById('modal-project-title').innerText = data.title;
       document.getElementById('modal-project-tagline').innerText = data.tagline;
-      document.getElementById('modal-project-date').innerText = data.date;
       document.getElementById('modal-project-desc').innerText = data.desc;
 
       // Details list

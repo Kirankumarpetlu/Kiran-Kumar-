@@ -3,44 +3,51 @@ import { Section } from "./section";
 
 const categories = [
   {
-    title: "AI / ML",
-    code: "cognitive.core",
+    title: "AI/ML & Deep Learning",
+    description: "Developing advanced neural architectures, large language models, custom agent orchestration grids, and computer vision pipelines to deliver intelligent systems.",
     items: [
       "Machine Learning",
-      "EDA",
       "Deep Learning",
       "Generative AI",
-      "Large Language Models",
+      "LLMs",
       "RAG Pipelines",
       "Fine-Tuning",
-      "Agentic AI",
       "NLP",
-    ],
-  },
-  {
-    title: "FRAMEWORKS",
-    code: "frameworks.run",
-    items: [
-      "FastAPI",
       "PyTorch",
       "TensorFlow",
-      "LangChain",
-      "LangGraph",
-      "AutoGen",
-      "CrewAI",
-      "Streamlit",
-      "React",
+      "HuggingFace",
+      "Python"
     ],
   },
   {
-    title: "LANGUAGES & DBS",
-    code: "lang.analytics",
-    items: ["Python", "Java", "JavaScript", "HTML / CSS", "MySQL", "MongoDB", "Vector DB"],
+    title: "MLOps & Production Deployment",
+    description: "Automating validation gates, managing containerized model serving interfaces, setting up CI/CD pipelines, and establishing secure telemetry loops.",
+    items: [
+      "Docker",
+      "Git",
+      "FastAPI",
+      "Linux",
+      "MLflow",
+      "Kubernetes",
+      "AWS ECS",
+      "Vercel",
+      "Model Serving"
+    ],
   },
   {
-    title: "CLOUD & TOOLS",
-    code: "cloud.security",
-    items: ["AWS", "Docker", "Git", "Linux", "Google Colab", "Jupyter", "HuggingFace"],
+    title: "Data Engineering & Cloud",
+    description: "Designing scalable data warehouse pipelines, optimizing analytical queries, configuring cloud compute clusters, and managing low-latency databases.",
+    items: [
+      "AWS",
+      "Google Cloud",
+      "SQL / MySQL",
+      "MongoDB",
+      "Vector Databases",
+      "Java",
+      "JavaScript",
+      "Apache Spark",
+      "Airflow"
+    ],
   },
 ];
 
@@ -56,8 +63,8 @@ export function Skills() {
         </>
       }
     >
-      {/* Categorized Skills Cards Grid replicating user attachment */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      {/* Three Column Responsive Grid */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {categories.map((c, idx) => (
           <motion.div
             key={c.title}
@@ -76,18 +83,25 @@ export function Skills() {
               }}
             />
 
-            <div className="relative">
-              {/* Header: Title in VT323 pixel font (uppercase matching Fixedsys style) */}
-              <h3 className="font-sans text-2xl font-normal tracking-wide text-white text-shadow-[0_0_8px_rgba(255,255,255,0.15)]">
-                {c.title}
-              </h3>
+            <div className="relative flex flex-col h-full justify-between">
+              <div>
+                {/* Heading: Title in VT323 pixel font (uppercase matching Fixedsys style) */}
+                <h3 className="font-sans text-2xl font-normal tracking-wide text-white text-shadow-[0_0_8px_rgba(255,255,255,0.15)] uppercase">
+                  {c.title}
+                </h3>
+
+                {/* Short descriptive paragraph */}
+                <p className="mt-3 text-sm text-silver-dim font-mono leading-relaxed">
+                  {c.description}
+                </p>
+              </div>
 
               {/* Wrapped Skill Tag Pills list inside Card */}
-              <div className="mt-6 flex flex-wrap gap-x-2.5 gap-y-3 font-mono">
+              <div className="mt-8 flex flex-wrap gap-x-2 gap-y-2.5 font-mono">
                 {c.items.map((it) => (
                   <span
                     key={it}
-                    className="rounded-md border border-white/5 bg-white/[0.02] px-4 py-2 text-xs text-silver-dim transition-all duration-300 hover:border-white/20 hover:text-white hover:-translate-y-0.5 select-none"
+                    className="rounded-full border border-white/10 bg-transparent px-3 py-1.5 text-xs text-silver-dim transition-all duration-300 hover:border-white/35 hover:text-white hover:-translate-y-0.5 select-none"
                   >
                     {it}
                   </span>

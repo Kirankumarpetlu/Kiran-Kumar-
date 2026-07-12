@@ -8,7 +8,7 @@ type Project = {
   id: string;
   title: string;
   tagline: string;
-  date: string;
+  date?: string;
   description: string;
   details: string[];
   stack: string[];
@@ -30,7 +30,6 @@ const projects: Project[] = [
     id: "01",
     title: "HIRE SMART: AI RESUME ANALYSER",
     tagline: "Multi-agent assessment & scoring engine",
-    date: "MID 2025",
     image: "/HireSmart.png",
     description:
       "Multi-agent architectural pipeline to automate resume assessment, scoring matrices, and compatibility analysis engine frameworks.",
@@ -51,9 +50,38 @@ const projects: Project[] = [
   },
   {
     id: "02",
+    title: "Alzheimer's Dementia Detection",
+    tagline: "Automated Alzheimer's disease detection from MRI brain scans using a 3-layer CNN and Explainable AI.",
+    date: "JUL 2026",
+    image: "/alzeimers.png",
+    description: "Developed a deep learning pipeline to classify MRI brain scans into three stages of Alzheimer's dementia. The model utilizes a custom 3-layer CNN trained on the OASIS-2 dataset and integrates LIME for prediction visualization.",
+    details: [
+      "• Built a custom 3-layer Convolutional Neural Network (CNN) using TensorFlow and Keras to classify MRI scans.",
+      "• Designed the model architecture with sequential 32, 64, and 128 filter Conv2D layers, each paired with MaxPooling for spatial reduction.",
+      "• Configured fully connected layers with a 128-neuron Dense layer, 0.5 Dropout for regularization, and a 3-class Softmax output.",
+      "• Processed 3D NIfTI MRI scans from the OASIS-2 dataset, analyzing 373 sessions across 150 subjects.",
+      "• Achieved a classification accuracy of 96.8% across three dementia stages: Non-Demented, Mildly Demented, and Demented.",
+      "• Integrated Explainable AI (LIME) to provide transparent, interpretable visualizations of the model's diagnostic predictions."
+    ],
+    stack: [
+      "Deep Learning",
+      "CNN",
+      "Python",
+      "TensorFlow",
+      "Keras",
+      "LIME",
+      "Computer Vision"
+    ],
+    category: "ai",
+    github: "https://github.com/Kirankumarpetlu/Alzheimers-Dementia-Detection",
+    live: "",
+    featured: true,
+  },
+  {
+    id: "03",
     title: "Agentic RAG",
     tagline: "Retrieval-Augmented Generation with Agentic AI using AutoGen",
-    date: "LATE 2025",
+
     image: "/AgenticRag.png",
     description:
       "An Agentic RAG system uses autonomous AI agents to dynamically reason, self-correct, and multi-step search for data rather than just following a fixed retrieval path.",
@@ -71,7 +99,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: "03",
+    id: "04",
     title: "Llama-3-8B-Instruct_Fine_Tunning",
     tagline:
       "Custom fine-tuning of LLaMA 3 8B Instruct for enhanced instruction-following capabilities",
@@ -100,7 +128,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: "04",
+    id: "05",
     title: "Brain Tumor Detection ",
     tagline: "Brain Tumor Detection using Resnet-18 ",
     date: "DEC 2025",
@@ -130,7 +158,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: "05",
+    id: "06",
     title: "Sales-Data-Analysis",
     tagline: "Sales Data Analysis using RFM",
     date: "DEC 2025",
@@ -159,7 +187,7 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    id: "06",
+    id: "07",
     title: "Multi-Lingual Ticket Classification",
     tagline: "Multi-Lingual Ticket Classification using SVM",
     date: "DEC 2025",
@@ -178,6 +206,32 @@ const projects: Project[] = [
     category: "ai",
     github: "https://github.com/Kirankumarpetlu/Multilingual-Ticket-Classifer/blob/main/README.md",
     live: "https://github.com/Kirankumarpetlu/Multilingual-Ticket-Classifer/blob/main/README.md",
+    featured: true,
+  },
+  {
+    id: "08",
+    title: "SKYNET – Document Intelligence",
+    tagline: "Enterprise AI platform automating document ingestion, risk analysis, and CRM synchronization.",
+    image: "/skynet.png",
+    description: "Developed an enterprise-grade AI Document Intelligence Platform that automates multi-format document ingestion, clause extraction, anomaly detection, and cross-document comparison through an intelligent, real-time processing pipeline.",
+    details: [
+      "• Engineered a real-time multi-stage processing pipeline using FastAPI and Python, automating OCR, document classification, and entity/clause extraction.",
+      "• Implemented intelligent risk analysis and cross-document comparison to automatically detect legal inconsistencies, missing clauses, and financial anomalies.",
+      "• Integrated an AI Document Assistant leveraging the Groq API, enabling users to query, summarize, and interact with uploaded documents using natural language.",
+      "• Built a responsive frontend with React 19, TypeScript, and Tailwind CSS, featuring live pipeline progress via WebSockets and automated CRM synchronization with Notion."
+    ],
+    stack: [
+      "LLM's",
+      "React ",
+      "FastAPI",
+      "Python",
+      "Groq API",
+      "Supabase",
+      "OCR"
+    ],
+    category: "ai",
+    github: "https://github.com/Kirankumarpetlu/skynet",
+    live: "https://skynet-n2mz.vercel.app/projects",
     featured: true,
   },
 ];
@@ -209,11 +263,10 @@ export function Projects() {
           <button
             key={c.id}
             onClick={() => setActiveTab(c.id)}
-            className={`rounded-md px-5 py-2 font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${
-              activeTab === c.id
-                ? "bg-white text-background font-bold shadow-[0_0_12px_rgba(255,255,255,0.15)]"
-                : "border border-white/10 text-silver-dim hover:border-white/20 hover:text-white"
-            }`}
+            className={`rounded-md px-5 py-2 font-mono text-[10px] uppercase tracking-wider transition-all duration-300 ${activeTab === c.id
+              ? "bg-white text-background font-bold shadow-[0_0_12px_rgba(255,255,255,0.15)]"
+              : "border border-white/10 text-silver-dim hover:border-white/20 hover:text-white"
+              }`}
           >
             {c.label}
           </button>
@@ -248,9 +301,7 @@ export function Projects() {
                 <div className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-widest text-silver-dim drop-shadow-md">
                   proj.{p.id}
                 </div>
-                <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-background/80 px-3 py-1 font-mono text-[10px] text-silver-dim group-hover:text-white group-hover:border-white/35 transition-colors duration-300">
-                  {p.date}
-                </div>
+
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
@@ -345,8 +396,6 @@ export function Projects() {
 
               <div className="mt-1 flex flex-wrap gap-4 font-mono text-[11px] text-silver-dim">
                 <span>{selectedProject.tagline}</span>
-                <span className="text-silver-dark font-bold">//</span>
-                <span>{selectedProject.date}</span>
               </div>
 
               <div className="my-6 h-px w-full bg-white/5" />

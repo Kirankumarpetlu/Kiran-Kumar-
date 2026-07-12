@@ -133,13 +133,7 @@ export function NeuralBackground() {
       <div className="noise-grain" />
       <div className="absolute inset-0 grid-bg opacity-40" />
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,0.06), transparent 60%), radial-gradient(800px 400px at 90% 110%, rgba(255,255,255,0.04), transparent 60%)",
-        }}
-      />
+
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
     </div>
   );

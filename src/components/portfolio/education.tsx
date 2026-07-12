@@ -47,6 +47,15 @@ const certifications = [
     details:
       "Intensive program covering large language models, statistical analysis, cloud infrastructure and deployment, and algorithmic data structures.",
   },
+  {
+    title: "An Agentic AI Framework for Semantic Resume Analysis and Proficiency-Aware Candidate",
+    issuer: "IEEE",
+    type: "Research Paper",
+    date: "2026",
+    code: "10.1109/ICERCS65898.2025.11581291",
+    link: "https://ieeexplore.ieee.org/document/11581291",
+    details: "Published a research paper unveiling an intelligent resume analysis system based on an agentic AI architecture. The framework utilizes a dual-matching approach, combining vector-based semantic search with Large Language Models (LLMs) to automate unstructured data parsing and infer candidate skill proficiency.",
+  },
 ];
 
 export function Education() {
