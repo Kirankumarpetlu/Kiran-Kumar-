@@ -45,10 +45,10 @@ export function Hero() {
     >
       {/* Background Image starting below Nav (80px top offset) */}
       <div
-        className="absolute inset-0 top-[80px] z-0 pointer-events-none transition-transform duration-700 portrait:rotate-90 portrait:scale-150"
+        className="absolute inset-0 top-[80px] z-0 pointer-events-none transition-all duration-700"
         style={{
           backgroundImage: "url('/background.png')",
-          backgroundSize: "cover",
+          backgroundSize: "100% auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
@@ -57,16 +57,7 @@ export function Hero() {
       <div className="mx-auto flex flex-col-reverse lg:flex-row w-full max-w-7xl gap-12 lg:gap-8 items-center justify-start relative z-10">
         {/* Left Column: Identity details (moves to second row on mobile) */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left lg:translate-x-12 lg:translate-y-24">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease }}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.04)] px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#10b981]"
-          >
 
-
-          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
