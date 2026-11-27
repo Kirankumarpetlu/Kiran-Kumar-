@@ -27,6 +27,24 @@ const categories = [
 
 const projects: Project[] = [
   {
+    id: "09",
+    title: "RedactIQ",
+    tagline: "Clinical PII detection and redaction pipeline",
+    description:
+      "Detects personal identifiers in English and mixed Indic clinical transcripts and replaces them with typed placeholders while preserving diagnoses, medications, symptoms, and ordinary dialogue.",
+    details: [
+      "Combines Microsoft Presidio, spaCy, and contextual rules with optional local H2O Lightning 4B verification through llama.cpp.",
+      "Validates Unicode span offsets and selects non-overlapping identifiers before redaction, with CSV, JSON, and text processing support.",
+      "Provides API-key-protected FastAPI endpoints for single and batch redaction, plus a Gradio review interface.",
+      "Reported 92.40% exact-span F1 and 93.90 ms mean processing time across 500 development transcripts on the local rules path. Reference annotations are incomplete, so precision and F1 are provisional.",
+    ],
+    stack: ["Python", "Presidio", "spaCy", "FastAPI", "H2O Lightning 4B", "llama.cpp", "Gradio"],
+    category: "pipelines",
+    github: "https://github.com/Kirankumarpetlu/RedactIQ",
+    live: "",
+    featured: true,
+  },
+  {
     id: "01",
     title: "HIRE SMART: AI RESUME ANALYSER",
     tagline: "Multi-agent assessment & scoring engine",
@@ -450,14 +468,14 @@ export function Projects() {
                   >
                     <span>$ cat source_code</span>
                   </a>
-                  <a
+                  {selectedProject.live && <a
                     href={selectedProject.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-silver hover:text-white transition-all underline underline-offset-4 decoration-white/10 hover:decoration-white"
                   >
                     <span>$ live_preview</span>
-                  </a>
+                  </a>}
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
