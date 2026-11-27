@@ -1,0 +1,53 @@
+.dino-track {
+  position: absolute;
+  bottom: 100%;
+  left: 24px;
+  right: 24px;
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+.dino-walk {
+  width: 64px;
+  animation: dino-walk 18s linear infinite;
+}
+
+.dino-pet {
+  display: block;
+  color: #f0fff4;
+  filter: drop-shadow(0 0 3px rgb(240 255 244 / 45%));
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.dino-pet:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.dino-leg {
+  animation: dino-step 0.22s steps(1, end) infinite;
+}
+
+.dino-leg-front {
+  animation-delay: -0.11s;
+}
+
+.dino-track[data-paused="true"] :is(.dino-walk, .dino-pet, .dino-leg) {
+  animation-play-state: paused;
+}
+
+@keyframes dino-walk {
+  from { margin-left: -64px; }
+  to { margin-left: 100%; }
+}
+
+@keyframes dino-step {
+  50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dino-track :is(.dino-walk, .dino-pet, .dino-leg) {
+    animation: none;
+  }
+}

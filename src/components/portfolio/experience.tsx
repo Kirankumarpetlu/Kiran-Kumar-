@@ -3,6 +3,18 @@ import { Section } from "./section";
 
 const experienceItems = [
   {
+    role: "Artificial Intelligence Intern",
+    company: "Mondee Tech Private Limited",
+    date: "Jul 2026 – Oct 2026",
+    location: "Hyderabad, India",
+    points: [
+      "Built and deployed a production AI pipeline for sensitive-data detection, improving precision, recall, and F1-score from 40% to 90% through model tuning and iterative evaluation, while scaling the system to maintain low-latency inference under production load.",
+      "Enhanced an agentic AI-powered web scraping pipeline integrating LLM-based content extraction, external search APIs, and automated data validation across six travel experience categories.",
+      "Optimized scraping costs through intelligent candidate filtering, redundant API call elimination, and conditional query execution, reducing API calls by 23.5% and operational costs by 13.5% in a live benchmark.",
+    ],
+    tech: ["Agentic AI", "LLMs", "Web Scraping", "Data Validation", "Model Tuning"],
+  },
+  {
     role: "Software Engineer Intern",
     company: "Defence Research and Development Organization (DRDO)",
     date: "Jun 2024 — jul 2024",
